@@ -1,0 +1,51 @@
+.slide-image{
+  width: 100%;
+  display: block;
+  height: auto;
+}
+.li-titlebar__wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10000;
+}
+.li-titlebar-image{
+  margin: 0 10rpx;
+  width: 211.5rpx;
+  height: 88rpx;
+}
+.li-titlebar{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: #FA4D2B;
+}
+.li-titlebar__search{
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.li-titlebar-input{
+  background-color: #fff;
+  width: 300rpx; 
+  height: 60rpx;
+  border-radius: 30rpx;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  line-height: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.icon-small{
+  position: absolute;
+  left: 236rpx;
+  top: 0;
+  padding: 13rpx 15rpx;
+}
+.li-home-main{
+  height: calc(100vh - 128rpx);
+}

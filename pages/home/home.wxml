@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view>
+  <view class="li-info">
+    <view></view>
+  </view>
+</view>
