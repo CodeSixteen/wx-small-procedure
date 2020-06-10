@@ -8,6 +8,8 @@
     </block>
   </view>
   <view class="usermotto">
-    <navigator url="../logs/logs">查看日志</navigator>
+    <navigator url="../logs/logs">
+      <button type="primary" plain="true">查看日志</button>
+    </navigator>
   </view>
 </view>
