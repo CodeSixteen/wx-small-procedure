@@ -1,51 +1,92 @@
-.slide-image{
-  width: 100%;
-  display: block;
+/* 基本信息 */
+.li-info{
+  color: #000000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-top: 1rpx solid #eeeeee;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+}
+.li-info__date{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+.li-info__operation{
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding-right: 30rpx;
+}
+.li-info__date--dayno{
+  padding-left: 30rpx;
+}
+.li-info__date--day{
+  font-size: 60rpx;
+  font-weight: 600;
+  text-align: left;
+  line-height: 54rpx;
+}
+.li-info__date--line{
+  height: 44rpx;
+  width: 2rpx;
+  background-color: #000000;
+  margin: 8rpx 12rpx;
+}
+.li-info__date--ym{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  font-size: 22rpx;
+  color: #666666;
+  line-height: 28rpx;
+}
+.li-info__icon{
+  width: 50rpx;
+  margin: 10rpx;
   height: auto;
 }
-.li-titlebar__wrapper{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10000;
+.li-info__operation--like-num{
+  color: #999999;
+  padding-right: 30rpx;
+  font-size: 26rpx;
 }
-.li-titlebar-image{
-  margin: 0 10rpx;
-  width: 211.5rpx;
-  height: 88rpx;
+/* 海报 */
+.li-banner__img{
+  display: block;
+  width: 100%;
+  height: auto;
 }
-.li-titlebar{
+
+/* 类型 */
+.li-hmoe-type{
+  display: flex;
+  flex-direction: column;
+  padding-left: 30rpx;
+  font-size: 44rpx;
+  line-height: 60rpx;
+  font-weight: 200;
+  margin-top: -60rpx;
+}
+.li-home-type__movie-dian{
+  color: #ffffff;
+}
+.li-home-type__period{
+  line-height: 1rpx;
+  font-size: 50rpx;
+  padding-left: 24rpx;
+}
+/* 引用 */
+.li-quote{
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  background-color: #FA4D2B;
-}
-.li-titlebar__search{
-  flex: 1;
-  position: relative;
-  display: flex;
-  align-items: center;
-}
-.li-titlebar-input{
-  background-color: #fff;
-  width: 300rpx; 
-  height: 60rpx;
-  border-radius: 30rpx;
+  font-size: 40rpx;
+  color: #333333;
   box-sizing: border-box;
-  padding: 0 20rpx;
-  font-size: 28rpx;
-  line-height: 50rpx;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-.icon-small{
-  position: absolute;
-  left: 236rpx;
-  top: 0;
-  padding: 13rpx 15rpx;
-}
-.li-home-main{
-  height: calc(100vh - 128rpx);
+  padding: 0 100rpx;
+  margin-top: 80rpx;
 }
