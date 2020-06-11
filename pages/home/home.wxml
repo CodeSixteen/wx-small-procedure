@@ -3,32 +3,30 @@
   <view class="li-info">
     <view class="li-info__date">
       <text class="li-info__date--dayno">No.</text>
-      <text class="li-info__date--day">08</text>
+      <text class="li-info__date--day">{{date.day}}</text>
       <view class="li-info__date--line"></view>
       <view class="li-info__date--ym">
-        <text>六月</text>
-        <text>2020</text>
+        <text>{{date.month}}</text>
+        <text>{{date.year}}</text>
       </view>
     </view>
     <view class="li-info__operation">
       <view>
-        <cover-image class="li-info__icon" src="./../../icon/like_icon.png"></cover-image>
+        <cover-image class="li-info__icon" src="{{ isLike ? './../../icon/like_active_icon.png' : './../../icon/like_icon.png' }}" bindtap="onLike"></cover-image>
       </view>
-      <view class="li-info__operation--like-num">823</view>
+      <view class="li-info__operation--like-num">{{likeCount}}</view>
       <view>
         <cover-image class="li-info__icon" src="./../../icon/share_icon.png"></cover-image>
       </view>
     </view>
   </view>
   <view class="li-banner">
-    <cover-image class="li-banner__img" src="./../../images/nezha_movie_img.png"></cover-image>
+    <cover-image class="li-banner__img" src="{{img}}"></cover-image>
   </view>
   <view class="li-hmoe-type">
-    <text class="li-home-type__movie-dian">电</text>
-    <text class="li-home-type__movie-ying">影</text>
+    <text class="li-home-type__movie-dian">{{typeOne}}</text>
+    <text class="li-home-type__movie-ying">{{typeTwo}}</text>
     <text class="li-home-type__period">。</text>
   </view>
-  <view class="li-quote">
-    生而为魔，那又如何。
-  </view>
+  <view class="li-quote">{{text}}</view>
 </view>

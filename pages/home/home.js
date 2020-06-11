@@ -4,26 +4,28 @@ Page({
    * 页面的初始数据
    */
   data: {
-    ad: []
+    img: './../../images/nezha_movie_img.png',
+    typeOne: '节',
+    typeTwo: '气',
+    text: '斗指巳为芒种，此时可种有芒之谷，过此即失效，故名芒种也。',
+    likeCount: 125,
+    date: {
+      year: '2020',
+      month: '六月',
+      day: '08'
+    },
+    isLike: false
   },
-  changeAd(ad) {
+  onLike: function() {
     this.setData({
-      data: [{
-        img: '',
-        type: 'movie',
-        title: '战狼',
-        des: '人生啦啦啦',
-        createTime: '2020-06-10 14:11:12',
-        like: 124,
-        author: '吴京'
-      }]
+      isLike: !this.data.isLike
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options)
+  onLoad: function () {
+    
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
