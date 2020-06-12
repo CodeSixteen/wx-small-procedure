@@ -1,4 +1,6 @@
 {
   "usingComponents": {},
-  "navigationBarTitleText": "流行"
+  "navigationBarTitleText": "流行",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
 }

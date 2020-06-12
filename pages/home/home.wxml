@@ -16,17 +16,20 @@
       </view>
       <view class="li-info__operation--like-num">{{likeCount}}</view>
       <view>
-        <cover-image class="li-info__icon" src="./../../icon/share_icon.png"></cover-image>
+        <button class="li-share__btn--custom" open-type="share">
+          <cover-image class="li-info__icon" src="./../../icon/share_icon.png"></cover-image>
+        </button>
       </view>
     </view>
   </view>
-  <view class="li-banner">
+  
+  <cover-view class="li-banner">
     <cover-image class="li-banner__img" src="{{img}}"></cover-image>
-  </view>
-  <view class="li-hmoe-type">
-    <text class="li-home-type__movie-dian">{{typeOne}}</text>
-    <text class="li-home-type__movie-ying">{{typeTwo}}</text>
-    <text class="li-home-type__period">。</text>
-  </view>
+    <cover-view class="li-banner__type">
+      <cover-view class="li-banner__type--one">{{typeOne}}</cover-view>
+      <cover-view class="li-banner__type--two">{{typeTwo}}</cover-view>
+      <cover-view class="li-banner__type--period">。</cover-view>
+    </cover-view>
+  </cover-view>
   <view class="li-quote">{{text}}</view>
 </view>

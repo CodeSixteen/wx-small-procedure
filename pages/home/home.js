@@ -17,8 +17,11 @@ Page({
     isLike: false
   },
   onLike: function() {
+    let num = this.data.likeCount
+    this.data.isLike ? num-- : num++
     this.setData({
-      isLike: !this.data.isLike
+      isLike: !this.data.isLike,
+      likeCount: num
     })
   },
   /**
@@ -59,7 +62,8 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    console.log(123);
+    wx.stopPullDownRefresh();
   },
 
   /**
