@@ -9,7 +9,7 @@
   </view>
   <view class="usermotto">
     <navigator url="../logs/logs">
-      <button type="primary" plain="true">查看日志</button>
+      <button type="primary" plain="true" size="mini">查看启动日志</button>
     </navigator>
   </view>
 </view>

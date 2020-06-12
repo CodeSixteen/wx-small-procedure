@@ -22,13 +22,13 @@
     }, {
       "pagePath": "pages/book/book",
       "text": "书单",
-      "iconPath": "icon/book_nol.png",
-      "selectedIconPath": "icon/book.png"
-    }, {
-      "pagePath": "pages/like/like",
-      "text": "喜欢",
       "iconPath": "icon/like_nol.png",
       "selectedIconPath": "icon/like.png"
+    }, {
+      "pagePath": "pages/like/like",
+      "text": "影格",
+      "iconPath": "icon/book_nol.png",
+      "selectedIconPath": "icon/book.png"
     }]
   },
   "style": "v2",

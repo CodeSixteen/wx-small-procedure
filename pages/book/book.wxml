@@ -1,2 +1,13 @@
 <!--pages/book/book.wxml-->
-<text></text>
+<view style="background-color: #f4f4f4;">
+  <view class="li-book__title"></view>
+  <view class="li-book__cotainer">
+    <view wx:for="{{books}}" class="li-book__item">
+      <view class="li-book__item--content">
+        <cover-image src="{{item.img}}"></cover-image>
+        <view class="li-book__item--title">{{item.title}}</view>
+        <view class="li-book__item--author">{{item.author}}</view>
+      </view>
+    </view>
+  </view>
+</view>

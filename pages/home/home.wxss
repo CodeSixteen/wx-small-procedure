@@ -93,9 +93,8 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  font-size: 40rpx;
+  font-size: 36rpx;
   color: #333333;
   box-sizing: border-box;
-  padding: 0 100rpx;
-  margin-top: 80rpx;
+  padding: 30rpx 60rpx;
 }

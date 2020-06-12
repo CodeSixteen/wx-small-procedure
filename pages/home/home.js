@@ -4,10 +4,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    img: './../../images/nezha_movie_img.png',
-    typeOne: '节',
-    typeTwo: '气',
-    text: '斗指巳为芒种，此时可种有芒之谷，过此即失效，故名芒种也。',
+    img: './../../images/ikon_img.png',
+    typeOne: '插',
+    typeTwo: '画',
+    text: '南方，火也，其帝炎帝，其佐朱明，执衡而治夏；其神为荧惑，其兽朱鸟。',
     likeCount: 125,
     date: {
       year: '2020',
