@@ -1,5 +1,5 @@
+const { baseUrl } = require('../../utils/request.js')
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -28,6 +28,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
+    wx.request({
+      url: baseUrl + 'api',
+      method: 'GET',
+      data: {
+        s: 123456,
+        b: 123456
+      },
+      success: (res) => {
+        console.log(res.data)
+      }
+    })
     
   },
   /**
