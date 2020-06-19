@@ -14,7 +14,11 @@ Page({
       month: '六月',
       day: '08'
     },
-    isLike: false
+    isLike: false,
+    poster: 'https://p1.music.126.net/BeIc-sv62xZPpVBS4DjE-g==/109951164607988464.jpg',
+    name: 'Wrap Me In Plastic',
+    author: 'CHROMANCE',
+    src: 'https://www.liwanbin.club/static/mp3/WrapMeInPlastic.mp3'
   },
   onLike: function() {
     let num = this.data.likeCount
@@ -32,8 +36,8 @@ Page({
       url: baseUrl + 'api',
       method: 'GET',
       data: {
-        s: 123456,
-        b: 123456
+        name: '李万彬',
+        age: 18
       },
       success: (res) => {
         console.log(res.data)

@@ -32,4 +32,7 @@
     </cover-view>
   </cover-view>
   <view class="li-quote">{{text}}</view>
+  <view>
+    <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop></audio>
+  </view>
 </view>
