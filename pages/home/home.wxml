@@ -32,7 +32,8 @@
     </cover-view>
   </cover-view>
   <view class="li-quote">{{text}}</view>
-  <view>
-    <audio poster="{{poster}}" name="{{name}}" author="{{author}}" src="{{src}}" id="myAudio" controls loop></audio>
+  <view class="li-audio__wrapper">
+    <view class="li-audio__play" bindtap="play"></view>
+    <view class="li-audio__stop" bindtap="stop"></view>
   </view>
 </view>

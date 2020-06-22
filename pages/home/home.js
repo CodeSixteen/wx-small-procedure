@@ -1,4 +1,5 @@
 const { baseUrl } = require('../../utils/request.js')
+const myAudio = wx.createInnerAudioContext();
 Page({
   /**
    * 页面的初始数据
@@ -17,8 +18,7 @@ Page({
     isLike: false,
     poster: 'https://p1.music.126.net/BeIc-sv62xZPpVBS4DjE-g==/109951164607988464.jpg',
     name: 'Wrap Me In Plastic',
-    author: 'CHROMANCE',
-    src: 'https://www.liwanbin.club/static/mp3/WrapMeInPlastic.mp3'
+    author: 'CHROMANCE'
   },
   onLike: function() {
     let num = this.data.likeCount
@@ -40,9 +40,9 @@ Page({
         age: 18
       },
       success: (res) => {
-        console.log(res.data)
+        // console.log(res.data)
       }
-    })
+    });
     
   },
   /**
@@ -56,7 +56,13 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    myAudio.src = 'https://www.liwanbin.club/static/mp3/WrapMeInPlastic.mp3';
+  },
+  play: function() {
+    myAudio.play();
+  },
+  stop: function () {
+    myAudio.pause();
   },
 
   /**

@@ -98,3 +98,24 @@
   box-sizing: border-box;
   padding: 30rpx 60rpx;
 }
+/* 播放按钮 */
+.li-audio__wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+.li-audio__play{
+  height: 0rpx;
+  width: 0rpx;
+  margin-right: 40rpx;
+  border-top: 20rpx solid transparent;
+  border-left: 40rpx solid #666666;
+  border-bottom: 20rpx solid transparent;
+}
+.li-audio__stop{
+  height: 40rpx;
+  width: 40rpx;
+  background-color: #666;
+}
