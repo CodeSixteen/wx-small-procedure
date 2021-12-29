@@ -56,7 +56,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    myAudio.src = 'https://www.liwanbin.club/static/mp3/WrapMeInPlastic.mp3';
+    myAudio.src = '';
   },
   play: function() {
     myAudio.play();

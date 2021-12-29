@@ -3,7 +3,8 @@
     "pages/home/home",
     "pages/book/book",
     "pages/like/like",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/animate/animate"
   ],
   "window":{
     "backgroundTextStyle":"light",

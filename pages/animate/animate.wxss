@@ -1,0 +1,27 @@
+/* pages/animate/animate.wxss */
+@import '/style/fireworks.wxss';
+.animate-demo {
+  display: inline-block;
+  animation: move-to-bottom linear infinite;
+  animation-duration: 5s;
+  position: absolute;
+  width: 10rpx;
+  height: 10rpx;
+  background: red;
+  border-radius: 50%;
+  left: 20%;
+}
+
+@keyframes move-to-bottom {
+  from {
+    top: -10%;
+  }
+  to {
+    top: 120%;
+  }
+}
+
+#myCanvas{
+  width: 100vw;
+  height: 100vh;
+}

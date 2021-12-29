@@ -1,0 +1,5 @@
+<!--pages/animate/animate.wxml-->
+<view class="animate-page">
+  <text class="animate-demo"></text>
+  <canvas type="2d" id="myCanvas" bindtouchstart="playFireworks"></canvas>
+</view>

@@ -1,4 +1,4 @@
-const baseUrl = 'https://www.liwanbin.club:5115/'
+const baseUrl = ''
 module.exports = {
   baseUrl: baseUrl
 }

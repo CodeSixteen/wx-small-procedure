@@ -32,8 +32,4 @@
     </cover-view>
   </cover-view>
   <view class="li-quote">{{text}}</view>
-  <view class="li-audio__wrapper">
-    <view class="li-audio__play" bindtap="play"></view>
-    <view class="li-audio__stop" bindtap="stop"></view>
-  </view>
 </view>
