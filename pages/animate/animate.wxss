@@ -1,15 +1,54 @@
 /* pages/animate/animate.wxss */
 @import '/style/fireworks.wxss';
+
+.welcome_page_bg {
+  background: #FFFBF0 url(https://upload-images.jianshu.io/upload_images/4806951-ef315f7fa94ff92a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp) no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.wish_page_bg {
+  background: #FFFBF0 url(https://upload-images.jianshu.io/upload_images/4806951-eae9e44e934f1281.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp) no-repeat;
+  width: 100vw;
+  height: 100vh;
+  background-size: 100% 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+/* 烟花页 style */
 .animate-demo {
   display: inline-block;
   animation: move-to-bottom linear infinite;
-  animation-duration: 5s;
+  animation-duration: 10s;
   position: absolute;
-  width: 10rpx;
-  height: 10rpx;
-  background: red;
+  background: #ffffff;
   border-radius: 50%;
   left: 20%;
+  width: 8rpx;
+  height: 8rpx;
+}
+.circle1{
+  animation: move-to-botto linear infinite;
+  animation-duration: 10s;
+  left: 10%;
+  width: 10rpx;
+  height: 10rpx;
+}
+.circle2{
+  left: 43%;
+  width: 8rpx;
+  height: 8rpx;
 }
 
 @keyframes move-to-bottom {
@@ -20,8 +59,39 @@
     top: 120%;
   }
 }
+@keyframes move-to-botto {
+  from {
+    top: -20%;
+  }
+  to {
+    top: 110%;
+  }
+}
 
-#myCanvas{
+#fireworks {
   width: 100vw;
   height: 100vh;
+}
+.christmas_bg{
+  background: url(https://upload-images.jianshu.io/upload_images/4806951-6d0f064c9715ce46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1024) no-repeat;
+  background-size: 100% 100%;
+  position: absolute;
+  width: 100%;
+  height: 20%;
+  bottom: 0;
+  left: 0;
+}
+
+.christmas_main {
+  position: absolute;
+  width: 60%;
+  height: 450rpx;
+  bottom: -5%;
+  left: -6%;
+}
+
+.fireworks_stars {
+  position: absolute;
+  top: 0;
+
 }

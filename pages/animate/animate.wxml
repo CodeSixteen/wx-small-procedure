@@ -1,5 +1,28 @@
 <!--pages/animate/animate.wxml-->
-<view class="animate-page">
-  <text class="animate-demo"></text>
-  <canvas type="2d" id="myCanvas" bindtouchstart="playFireworks"></canvas>
+<view>
+  <view class="welcome_page_bg" bindtap="toWish" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
+    <view class="text_hi">Hi，</view>
+    <view class="text_girl">小仙女。</view>
+    <view class="text_happy_new_year">新年快乐呀！</view>
+  </view>
+  <view wx:if="{{showWish}}" class="wish_page_bg" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
+    <view class="text_new_year">新的一年，</view>
+    <view class="text_wish_lucky">愿你与幸运撞个满怀。</view>
+    <view class="text_wish_arrive">愿你所有的期待都如约而至。</view>
+    <button bindtap="toFireworks">去放烟花吧！</button>
+  </view>
+
+  <view wx:if="{{showFireWorks}}" class="animate-page">
+    <text class="animate-demo"></text>
+    <text class="animate-demo circle1"></text>
+    <text class="animate-demo circle2"></text>
+    <text class="animate-demo circle3"></text>
+    <text class="animate-demo circle4"></text>
+    <text class="animate-demo circle5"></text>
+    <text class="animate-demo circle6"></text>
+    <image src="/images/circle.png" alt="12" class="fireworks_stars" />
+    <view class="christmas_bg"></view>
+    <image src="https://img1.maka.im/user/12031078/images/897807_ff9ad9f5367e5d11523ff0159407dd00.gif" alt="12" class="christmas_main" />
+    <canvas type="2d" id="fireworks" bindtouchstart="playFireworks" bindtouchend="touchScreenEnd"></canvas>
+  </view>
 </view>

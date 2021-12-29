@@ -1,28 +1,25 @@
-// pages/animate/animate.js
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-    self: {}
+    self: {},
+    timer: null,
+    pageY: 0,
+    showWish: false,
+    showFireWorks: false
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  playFireworks(e) {
+    this.touchScreenStart(e)
+    var rand = function (rMi, rMa) {
+      return ~~((Math.random() * (rMa - rMi + 1)) + rMi);
+    }
+    const self = this.data.self;
+    self.mx = e.touches[0].x - 0;
+    self.my = e.touches[0].y - 0;
+    self.currentHue = rand(self.hueMin, self.hueMax);
+    self.createFireworks(self.cw / 2, self.ch, self.mx, self.my);
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  loadFireworks() {
     const query = wx.createSelectorQuery()
-    const version = wx.getSystemInfoSync().SDKVersion
-    console.log(version)
-    query.select('#myCanvas')
+    query.select('#fireworks')
       .fields({
         node: true,
         size: true
@@ -40,7 +37,6 @@ Page({
         const self = this.data.self;
         const that = this;
         const systemInfo = wx.getSystemInfoSync()
-        console.log(res)
         self.canvas = res[0].node
         self.ctx = self.canvas.getContext('2d')
         self.cw = systemInfo.screenWidth
@@ -146,7 +142,11 @@ Page({
             self.ctx.moveTo(Math.round(p.coordLast[coordRand].x), Math.round(p.coordLast[coordRand].y));
             self.ctx.lineTo(Math.round(p.x), Math.round(p.y));
             self.ctx.closePath();
-            self.ctx.strokeStyle = 'hsla(' + p.hue + ', 100%, ' + p.brightness + '%, ' + p.alpha + ')';
+            var randAlpha = rand(50, 100) / 100;
+            var red = rand(0, 255);
+            var green = rand(0, 255);
+            var blue = rand(0, 255);
+            self.ctx.fillStyle = 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + randAlpha + ')';
             self.ctx.stroke();
 
             if (self.flickerDensity > 0) {
@@ -155,8 +155,8 @@ Page({
                 self.ctx.beginPath();
                 self.ctx.arc(Math.round(p.x), Math.round(p.y), rand(p.lineWidth, p.lineWidth + 3) / 2, 0, Math.PI * 2, false)
                 self.ctx.closePath();
-                var randAlpha = rand(50, 100) / 100;
-                self.ctx.fillStyle = 'hsla(' + p.hue + ', 100%, ' + p.brightness + '%, ' + randAlpha + ')';
+                self.ctx.fillStyle = 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + randAlpha + ')';
+
                 self.ctx.fill();
               }
             }
@@ -196,7 +196,6 @@ Page({
             alpha: rand(50, 100) / 100,
             lineWidth: self.lineWidth
           };
-          console.log(self)
           self.fireworks.push(newFirework);
         };
 
@@ -268,7 +267,11 @@ Page({
             self.ctx.moveTo(Math.round(f.coordLast[coordRand].x), Math.round(f.coordLast[coordRand].y));
             self.ctx.lineTo(Math.round(f.x), Math.round(f.y));
             self.ctx.closePath();
-            self.ctx.strokeStyle = 'hsla(' + f.hue + ', 100%, ' + f.brightness + '%, ' + f.alpha + ')';
+            var randAlpha = rand(50, 100) / 100;
+            var red = rand(0, 255);
+            var green = rand(0, 255);
+            var blue = rand(0, 255);
+            self.ctx.strokeStyle = 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + randAlpha + ')';
             self.ctx.stroke();
 
             if (self.showTarget) {
@@ -287,7 +290,11 @@ Page({
               self.ctx.rotate(f.shockwaveAngle);
               self.ctx.beginPath();
               self.ctx.arc(0, 0, 1 * (f.speed / 5), 0, Math.PI, true);
-              self.ctx.strokeStyle = 'hsla(' + f.hue + ', 100%, ' + f.brightness + '%, ' + rand(25, 60) / 100 + ')';
+              var randAlpha = rand(50, 100) / 100;
+              var red = rand(0, 255);
+              var green = rand(0, 255);
+              var blue = rand(0, 255);
+              self.ctx.strokeStyle = 'rgba(' + red + ', ' + green + ', ' + blue + ', ' + randAlpha + ')';
               self.ctx.lineWidth = f.lineWidth;
               self.ctx.stroke();
               self.ctx.restore();
@@ -312,59 +319,68 @@ Page({
           self: self
         })
         self.canvasLoop();
+
+        const timer = setInterval(function () {
+          self.createFireworks(375 / 2, 812, rand(30, 360), rand(10, 400));
+        }, 1000)
+        that.setData({
+          timer
+        })
       })
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  toFireworks() {
+    this.setData({
+      showFireWorks: true
+    })
+    this.loadFireworks()
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  toWish() {
+    this.setData({
+      showWish: true
+    })
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  touchScreenStart(e) {
+    const pageY = e.changedTouches[0].y || e.changedTouches[0].pageY
+    this.setData({
+      pageY
+    })
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
-  },
-  playFireworks(e) {
-    var rand = function (rMi, rMa) {
-      return ~~((Math.random() * (rMa - rMi + 1)) + rMi);
+  touchScreenEnd(e) {
+    const pageY = e.changedTouches[0].y || e.changedTouches[0].pageY
+    if (pageY > this.data.pageY) {
+      if (!this.data.showWish) {
+        // 欢迎页下拉
+        return
+      }
+      if (this.data.showWish && !this.data.showFireWorks) {
+        // 祝福页下拉
+        this.setData({
+          showWish: false
+        })
+        return
+      }
+      if (this.data.showWish && this.data.showFireWorks) {
+        // 烟花页下拉
+        if (pageY - this.data.pageY > 200) {
+          if (this.data.timer) {
+            clearInterval(this.data.timer)
+          }
+          this.setData({
+            showFireWorks: false,
+            timer: null
+          })
+        }
+      }
+    } else {
+      if (!this.data.showWish) {
+        // 欢迎页上滑
+        this.toWish()
+        return
+      }
+      if (this.data.showWish && !this.data.showFireWorks) {
+        // 祝福页上滑
+        this.toFireworks()
+      }
     }
-    const self = this.data.self;
-    console.log(e.touches[0])
-    self.mx = e.touches[0].x - 0;
-    self.my = e.touches[0].y - 0;
-    self.currentHue = rand(self.hueMin, self.hueMax);
-    self.createFireworks(self.cw / 2, self.ch, self.mx, self.my);
   }
 })
