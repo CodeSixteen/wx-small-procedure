@@ -20,60 +20,58 @@ Page({
    */
   onReady: function () {
     const query = wx.createSelectorQuery()
+    const version = wx.getSystemInfoSync().SDKVersion
+    console.log(version)
     query.select('#myCanvas')
       .fields({
         node: true,
         size: true
       })
       .exec((res) => {
-        const self = this.data.self;
-        const that = this;
-
-        var rand = function (rMi, rMa) {
+        const rand = function (rMi, rMa) {
           return ~~((Math.random() * (rMa - rMi + 1)) + rMi);
         }
-        var hitTest = function (x1, y1, w1, h1, x2, y2, w2, h2) {
+        const hitTest = function (x1, y1, w1, h1, x2, y2, w2, h2) {
           return !(x1 + w1 < x2 || x2 + w2 < x1 || y1 + h1 < y2 || y2 + h2 < y1);
         };
-        var requestAnimFrame = function (a) {
+        const requestAnimFrame = function (a) {
           setTimeout(a, 1E3 / 60)
-        }
-
-        self.init = function () {
-          const systemInfo = wx.getSystemInfoSync()
-          self.canvas = res[0].node
-          self.ctx = self.canvas.getContext('2d')
-          self.cw = systemInfo.screenWidth
-          self.ch = systemInfo.screenHeight
-          self.canvas.width = systemInfo.screenWidth
-          self.canvas.height = systemInfo.screenHeight
-
-          self.particles = [];
-          self.partCount = 150;
-          self.fireworks = [];
-          self.mx = self.cw / 2;
-          self.my = self.ch / 2;
-          self.currentHue = 30;
-          self.partSpeed = 5;
-          self.partSpeedVariance = 10;
-          self.partWind = 50;
-          self.partFriction = 5;
-          self.partGravity = 1;
-          self.hueMin = 0;
-          self.hueMax = 360;
-          self.fworkSpeed = 4;
-          self.fworkAccel = 10;
-          self.hueVariance = 30;
-          self.flickerDensity = 25;
-          self.showShockwave = true;
-          self.showTarget = false;
-          self.clearAlpha = 25;
-
-          self.ctx.lineCap = 'round';
-          self.ctx.lineJoin = 'round';
-          self.lineWidth = 1;
-          self.canvasLoop();
         };
+        const self = this.data.self;
+        const that = this;
+        const systemInfo = wx.getSystemInfoSync()
+        console.log(res)
+        self.canvas = res[0].node
+        self.ctx = self.canvas.getContext('2d')
+        self.cw = systemInfo.screenWidth
+        self.ch = systemInfo.screenHeight
+        self.canvas.width = systemInfo.screenWidth
+        self.canvas.height = systemInfo.screenHeight
+
+        self.particles = [];
+        self.partCount = 150;
+        self.fireworks = [];
+        self.mx = self.cw / 2;
+        self.my = self.ch / 2;
+        self.currentHue = 30;
+        self.partSpeed = 5;
+        self.partSpeedVariance = 10;
+        self.partWind = 50;
+        self.partFriction = 5;
+        self.partGravity = 1;
+        self.hueMin = 0;
+        self.hueMax = 360;
+        self.fworkSpeed = 4;
+        self.fworkAccel = 10;
+        self.hueVariance = 30;
+        self.flickerDensity = 25;
+        self.showShockwave = true;
+        self.showTarget = false;
+        self.clearAlpha = 25;
+
+        self.ctx.lineCap = 'round';
+        self.ctx.lineJoin = 'round';
+        self.lineWidth = 1;
 
         self.createParticles = function (x, y, hue) {
           var countdown = self.partCount;
@@ -198,10 +196,9 @@ Page({
             alpha: rand(50, 100) / 100,
             lineWidth: self.lineWidth
           };
+          console.log(self)
           self.fireworks.push(newFirework);
-
         };
-
 
         self.updateFireworks = function () {
           var i = self.fireworks.length;
@@ -298,16 +295,6 @@ Page({
           };
         };
 
-        self.bindEvents = function () {
-
-        }
-
-        self.clear = function () {
-          self.particles = [];
-          self.fireworks = [];
-          self.ctx.clearRect(0, 0, self.cw, self.ch);
-        };
-
         self.canvasLoop = function () {
           requestAnimFrame(self.canvasLoop, self.canvas);
           self.ctx.globalCompositeOperation = 'destination-out';
@@ -321,8 +308,10 @@ Page({
             self: self
           })
         };
-
-        self.init()
+        that.setData({
+          self: self
+        })
+        self.canvasLoop();
       })
   },
 
