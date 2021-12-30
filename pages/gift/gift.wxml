@@ -1,28 +1,52 @@
 <!--pages/animate/animate.wxml-->
 <view>
-  <view class="welcome_page_bg" bindtap="toWish" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
-    <view class="text text_hi">Hi，</view>
-    <view class="text text_girl">小仙女。</view>
-    <view class="text text_happy_new_year">新年快乐呀！</view>
+  <view wx:if="{{showWelcome}}" class="welcome_page_bg" bindtap="toWish" bindanimationend="showHi" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
+    <view class="text_warp">
+      <view wx:if="{{showHiText}}" class="text_hi" bindanimationend="showGirl">Hi，</view>
+      <view wx:if="{{showGirlText}}" class="text_girl" bindanimationend="showHappyNewYear">
+        小仙女。
+      </view>
+      <view wx:if="{{showHappyNewYearText}}" class="text_happy_new_year" bindanimationend="showNextBtn">
+        新年快乐呀！
+      </view>
+    </view>
+    <view wx:if="{{showNextBtnText}}" class="next_btn" bindtap="toWish">上滑查看下一页</view>
   </view>
-  <view wx:if="{{showWish}}" class="wish_page_bg" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
-    <view class="text text_new_year">新的一年，</view>
-    <view class="text text_wish_lucky">愿你与幸运撞个满怀。</view>
-    <view class="text text_wish_arrive">愿你所有的期待都如约而至。</view>
-    <button bindtap="toFireworks">去放烟花吧！</button>
+  <view wx:if="{{showWish}}" class="wish_page_bg" bindanimationend="showNewYear" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
+    <view class="wish_text_warp">
+      <view wx:if="{{showNewYearText}}" class="text_new_year" bindanimationend="showLucky">新的一年，</view>
+      <view wx:if="{{showLuckyText}}" class="text_wish_lucky" bindanimationend="showArrive">愿你与幸运撞个满怀。</view>
+      <view wx:if="{{showArriveText}}" class="text_wish_arrive" bindanimationend="showToFireworks">愿你所有的期待都如约而至。</view>
+    </view>
+    <view wx:if="{{showToFireworksBtn}}" class="btn_to_fireworks_wrap">
+      <view class="btn_to_fireworks_bg"></view>
+      <view class="btn_to_fireworks" bindtap="toFireworks">去放烟花吧</view>
+    </view>
   </view>
 
-  <view wx:if="{{showFireWorks}}" class="animate-page">
+  <view wx:if="{{showFireWorks}}" class="fireworks-page" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
     <text class="animate-demo"></text>
     <text class="animate-demo circle1"></text>
     <text class="animate-demo circle2"></text>
     <text class="animate-demo circle3"></text>
-    <text class="animate-demo circle4"></text>
-    <text class="animate-demo circle5"></text>
-    <text class="animate-demo circle6"></text>
-    <image src="/images/circle.png" alt="12" class="fireworks_stars" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake1" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake2" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake3" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake4" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake5" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake6" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake7" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake8" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake9" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake10" />
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-2f848940527a9b6b.png" class="snowflake snowflake11" />
     <view class="christmas_bg"></view>
-    <image src="https://img1.maka.im/user/12031078/images/897807_ff9ad9f5367e5d11523ff0159407dd00.gif" alt="12" class="christmas_main" />
-    <canvas type="2d" id="fireworks" bindtouchstart="playFireworks" bindtouchend="touchScreenEnd"></canvas>
+    <image src="https://img1.maka.im/user/12031078/images/897807_ff9ad9f5367e5d11523ff0159407dd00.gif" class="christmas_main" />
+    <canvas type="2d" id="fireworks" bindtouchstart="playFireworks">
+    </canvas>
+  </view>
+  <view class="{{musicClass}}" bindtap="stopMusic">
+    <image src="https://upload-images.jianshu.io/upload_images/4806951-956666ea77fd42d3.png"></image>
+    <view hidden="{{!musicStop}}" class="music_line"></view>
   </view>
 </view>

@@ -17,6 +17,12 @@
           "pathName": "pages/gift/gift",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/home/home",
+          "query": "",
+          "scene": null
         }
       ]
     }

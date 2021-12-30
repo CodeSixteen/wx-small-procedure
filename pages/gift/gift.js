@@ -1,13 +1,120 @@
 Page({
   data: {
+    myAudioSrc: 'http://m10.music.126.net/20211230224616/7cc57c0b5e7043b1fbe742cdaba7ba48/ymusic/2d31/cbe1/b405/9694012993255d512f94cb24e8d760bd.mp3',
+    musicClass: 'music_box',
+    musicStop: false,
+    innerAudioContext: null,
     self: {},
     timer: null,
     pageY: 0,
+    showWelcome: false,
+    isToWish: false,
     showWish: false,
-    showFireWorks: false
+    isToFireworks: false,
+    showFireWorks: false,
+    showHiText: false,
+    showGirlText: false,
+    showHappyNewYearText: false,
+    showNextBtnText: false,
+    showNewYearText: false,
+    showLuckyText: false,
+    showArriveText: false,
+    showToFireworksBtn: false
+  },
+  onShow() {
+    this.setData({
+      showWelcome: true
+    })
+    const innerAudioContext = wx.createInnerAudioContext()
+    innerAudioContext.autoplay = true
+    innerAudioContext.loop = true
+    innerAudioContext.src = this.data.myAudioSrc
+    innerAudioContext.onPlay(() => {
+      console.log('开始播放')
+    })
+    innerAudioContext.onError((res) => {
+      console.log(res.errMsg)
+      console.log(res.errCode)
+    })
+    this.setData({
+      innerAudioContext
+    })
+  },
+  stopMusic() {
+    if (this.data.musicStop) {
+      this.data.innerAudioContext.play()
+      this.setData({
+        musicStop: false,
+        musicClass: 'music_box'
+      })
+    } else {
+      this.data.innerAudioContext.pause()
+      this.setData({
+        musicStop: true,
+        musicClass: 'music_box-stop'
+      })
+    }
+  },
+  showHi() {
+    this.setData({
+      showHiText: true
+    })
+  },
+  showGirl() {
+    this.setData({
+      showGirlText: true
+    })
+  },
+  showHappyNewYear() {
+    this.setData({
+      showHappyNewYearText: true
+    })
+  },
+  showNextBtn() {
+    this.setData({
+      showNextBtnText: true,
+      isToWish: true
+    })
+  },
+  toWelcome() {
+    this.setData({
+      showWelcome: true,
+      isToWish: false,
+      showWish: false,
+      showFireWorks: false,
+      showHiText: false,
+      showGirlText: false,
+      showHappyNewYearText: false,
+      showNextBtnText: false,
+      showNewYearText: false,
+      showLuckyText: false,
+      showArriveText: false,
+      showToFireworksBtn: false
+    })
+  },
+  showNewYear() {
+    // 显示新的一年
+    this.setData({
+      showNewYearText: true
+    })
+  },
+  showLucky() {
+    this.setData({
+      showLuckyText: true
+    })
+  },
+  showArrive() {
+    this.setData({
+      showArriveText: true
+    })
+  },
+  showToFireworks() {
+    this.setData({
+      isToFireworks: true,
+      showToFireworksBtn: true
+    })
   },
   playFireworks(e) {
-    this.touchScreenStart(e)
     var rand = function (rMi, rMa) {
       return ~~((Math.random() * (rMa - rMi + 1)) + rMi);
     }
@@ -329,14 +436,26 @@ Page({
       })
   },
   toFireworks() {
+    if (!this.data.isToFireworks) return
     this.setData({
-      showFireWorks: true
+      isToFireworks: false,
+      showWish: false,
+      showFireWorks: true,
+      showNewYearText: false,
+      showLuckyText: false,
+      showArriveText: false,
+      showToFireworksBtn: false
     })
     this.loadFireworks()
   },
   toWish() {
+    if (!this.data.isToWish) return
     this.setData({
-      showWish: true
+      showWish: true,
+      showWelcome: false,
+      showHiText: false,
+      showGirlText: false,
+      showHappyNewYearText: false,
     })
   },
   touchScreenStart(e) {
@@ -348,37 +467,36 @@ Page({
   touchScreenEnd(e) {
     const pageY = e.changedTouches[0].y || e.changedTouches[0].pageY
     if (pageY > this.data.pageY) {
-      if (!this.data.showWish) {
-        // 欢迎页下拉
-        return
-      }
-      if (this.data.showWish && !this.data.showFireWorks) {
+      if (this.data.showWish) {
         // 祝福页下拉
-        this.setData({
-          showWish: false
-        })
+        if (pageY - this.data.pageY > 100) {
+          this.toWelcome()
+        }
         return
       }
-      if (this.data.showWish && this.data.showFireWorks) {
+      if (this.data.showFireWorks) {
         // 烟花页下拉
-        if (pageY - this.data.pageY > 200) {
+        if (pageY - this.data.pageY > 100) {
           if (this.data.timer) {
             clearInterval(this.data.timer)
           }
           this.setData({
             showFireWorks: false,
+            showWish: true,
+            showNewYearText: false,
+            showLuckyText: false,
+            showArriveText: false,
             timer: null
           })
         }
       }
     } else {
-      if (!this.data.showWish) {
+      if (this.data.showWelcome) {
         // 欢迎页上滑
         this.toWish()
         return
       }
-      if (this.data.showWish && !this.data.showFireWorks) {
-        // 祝福页上滑
+      if (this.data.showWish && this.data.pageY - pageY > 100) {
         this.toFireworks()
       }
     }

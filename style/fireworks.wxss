@@ -1,4 +1,4 @@
-.animate-page {
+.fireworks-page {
   /* background: radial-gradient(ellipse at bottom, #520c70 0, #520c70 100%); */
   background: url(https://upload-images.jianshu.io/upload_images/4806951-3bfa02165f5b5e60.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240) no-repeat;
   background-size: 100% 100%;
@@ -12,6 +12,7 @@
   -webkit-box-align: center;
   align-items: center;
   position: relative;
+  animation: fadeIn 2s;
 }
 
 view {

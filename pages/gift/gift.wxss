@@ -1,30 +1,121 @@
-/* pages/animate/animate.wxss */
+@import '/style/animate.min.wxss';
 @import '/style/fireworks.wxss';
 
 .welcome_page_bg {
   background: #FFFBF0 url(https://upload-images.jianshu.io/upload_images/4806951-ef315f7fa94ff92a.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp) no-repeat;
   width: 100vw;
   height: 100vh;
-  background-size: 100% 100%;
+  background-size: 100% auto;
+  background-position: center top;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  animation: fadeIn 2s;
+}
+.text_warp{
+  padding: 200rpx 80rpx;
+  color: #413F40;
+  font-size: 42rpx;
+  font-weight: 500;
 }
 
+.wish_text_warp{
+  padding: 200rpx 80rpx;
+  color: #413F40;
+  font-size: 42rpx;
+  font-weight: 500;
+}
+.text_hi,
+.text_girl,
+.text_happy_new_year,
+.text_new_year,
+.text_wish_lucky,
+.text_wish_arrive,
+.btn_to_fireworks{
+  padding-bottom: 10rpx;
+  animation: fadeIn 1s;
+}
+.next_btn{
+  display: inline-block;
+  position: absolute;
+  background-color: transparent;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 26rpx;
+  color: #af9993;
+  font-weight: 400;
+  animation: fadeIn 1s;
+}
+.btn_to_fireworks_wrap{
+  position: relative;
+  padding: 0;
+  margin: 0 auto;
+  height: 98rpx;
+  animation: fadeIn 1s;
+}
+.btn_to_fireworks_bg{
+  position: absolute;
+  width: 290rpx;
+  height: 98rpx;
+  border-radius: 49rpx;
+  top: 50%;
+  left: 50%;
+  background-color: #F23A3A;
+  opacity: .3;
+  transform: translate3d(-50%, -50%, 0);
+  animation: magnify 1.4s infinite;
+}
+.btn_to_fireworks{
+  padding: 0;
+  text-align: center;
+  width: 276rpx;
+  height: 84rpx;
+  margin: 0 auto;
+  line-height: 84rpx;
+  background-color: #F23A3A;
+  color: white;
+  border-radius: 42rpx;
+  font-size: 30rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  opacity: .9;
+  transform: translate3d(-50%, -50%, 0);
+}
 .wish_page_bg {
   background: #FFFBF0 url(https://upload-images.jianshu.io/upload_images/4806951-eae9e44e934f1281.jpg?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp) no-repeat;
   width: 100vw;
   height: 100vh;
-  background-size: 100% 100%;
+  background-size: 100% auto;
+  background-position: center bottom;
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
+  animation: fadeIn 2s;
 }
 
+@keyframes magnify {
+  0% {
+    width: 290rpx;
+    height: 98rpx;
+    border-radius: 49rpx;
+  }
+  50% {
+    width: 300rpx;
+    height: 108rpx;
+    border-radius: 54rpx;
+  }
+  100% {
+    width: 290rpx;
+    height: 98rpx;
+    border-radius: 49rpx;
+  }
+}
 
 /* 烟花页 style */
 .animate-demo {
@@ -41,14 +132,16 @@
 .circle1{
   animation: move-to-botto linear infinite;
   animation-duration: 10s;
-  left: 10%;
+  left: 77%;
   width: 10rpx;
   height: 10rpx;
 }
 .circle2{
-  left: 43%;
-  width: 8rpx;
-  height: 8rpx;
+  animation: move-to-botto linear infinite;
+  animation-duration: 14s;
+  left: 46%;
+  width: 10rpx;
+  height: 10rpx;
 }
 
 @keyframes move-to-bottom {
@@ -92,9 +185,191 @@
 
 .fireworks_stars {
   position: absolute;
+  width: 100%;
   top: 0;
+  left: 0;
 }
-.text{
-  font-size: 32rpx;
-  color: rgb(117, 54, 98);
+
+.snowflake{
+  background-color: transparent;
+  position: absolute;
+  opacity: 1;
+  top: -10%;
+}
+.snowflake1{
+  animation: snowflake1 linear infinite;
+  animation-duration: 16s;
+  left: 10%;
+  width: 28rpx;
+  height: 28rpx
+}
+.snowflake2{
+  animation: snowflake1 linear infinite;
+  animation-duration: 20s;
+  left: 60%;
+  width: 24rpx;
+  height: 24rpx
+}
+.snowflake3{
+  animation: snowflake2 linear infinite;
+  animation-duration: 25s;
+  left: 20%;
+  width: 20rpx;
+  height: 20rpx
+}
+.snowflake4{
+  animation: snowflake2 linear infinite;
+  animation-duration: 18s;
+  left: 70%;
+  width: 32rpx;
+  height: 32rpx
+}
+.snowflake5{
+  animation: snowflake3 linear infinite;
+  animation-duration: 24s;
+  left: 30%;
+  width: 24rpx;
+  height: 24rpx
+}
+.snowflake6{
+  animation: snowflake3 linear infinite;
+  animation-duration: 18s;
+  left: 78%;
+  width: 20rpx;
+  height: 20rpx
+}
+.snowflake7{
+  animation: snowflake4 linear infinite;
+  animation-duration: 24s;
+  left: 36%;
+  width: 28rpx;
+  height: 28rpx
+}
+.snowflake8{
+  animation: snowflake4 linear infinite;
+  animation-duration: 18s;
+  left: 88%;
+  width: 30rpx;
+  height: 30rpx
+}
+.snowflake9{
+  animation: snowflake5 linear infinite;
+  animation-duration: 24s;
+  left: 23%;
+  width: 24rpx;
+  height: 24rpx
+}
+.snowflake10{
+  animation: snowflake5 linear infinite;
+  animation-duration: 18s;
+  left: 67%;
+  width: 20rpx;
+  height: 20rpx
+}
+.snowflake11{
+  animation: snowflake6 linear infinite;
+  animation-duration: 24s;
+  left: 92%;
+  width: 24rpx;
+  height: 24rpx
+}
+
+@keyframes snowflake1 {
+  0% {
+    top: -110%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+@keyframes snowflake2 {
+  0% {
+    top: -10%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snowflake3 {
+  0% {
+    top: -30%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snowflake4 {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snowflake5 {
+  0% {
+    top: -70%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+@keyframes snowflake6 {
+  0% {
+    top: -90%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+
+.music_box{
+  position: absolute;
+  top: 200rpx;
+  right: 40rpx;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  border: 2rpx solid #af9993;
+  animation: rotate 5s linear infinite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music_box-stop{
+  position: absolute;
+  top: 200rpx;
+  right: 40rpx;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  border: 2rpx solid #af9993;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.music_box-stop image,
+.music_box image{
+  width: 66rpx;
+  height: 66rpx;
+  object-fit: cover !important;
+  display: inline-block;
+}
+.music_line{
+  position: absolute;
+  width: 90rpx;
+  height: 2rpx;
+  background-color: #af9993;
+  transform: rotate(45deg);
+}
+
+@keyframes rotate {
+  form {
+    transform:rotate(0deg);
+  }
+  to {
+    transform:  rotate(360deg);
+  }
 }
