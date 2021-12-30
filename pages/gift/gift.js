@@ -1,7 +1,8 @@
 Page({
   data: {
-    myAudioSrc: 'http://m10.music.126.net/20211230224616/7cc57c0b5e7043b1fbe742cdaba7ba48/ymusic/2d31/cbe1/b405/9694012993255d512f94cb24e8d760bd.mp3',
+    myAudioSrc: 'http://m801.music.126.net/20211231002154/633d4a9e609aef418620ad0ef243da0c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/8522835445/443d/7b84/e149/042462b5e27f8d468714249ba4c6318a.mp3',
     musicClass: 'music_box',
+    showMusic: true,
     musicStop: false,
     innerAudioContext: null,
     self: {},
@@ -29,10 +30,12 @@ Page({
     innerAudioContext.autoplay = true
     innerAudioContext.loop = true
     innerAudioContext.src = this.data.myAudioSrc
-    innerAudioContext.onPlay(() => {
-      console.log('开始播放')
-    })
+    innerAudioContext.onPlay(() => {})
     innerAudioContext.onError((res) => {
+      this.setData({
+        musicStop: true,
+        showMusic: false
+      })
       console.log(res.errMsg)
       console.log(res.errCode)
     })
@@ -44,14 +47,12 @@ Page({
     if (this.data.musicStop) {
       this.data.innerAudioContext.play()
       this.setData({
-        musicStop: false,
-        musicClass: 'music_box'
+        musicStop: false
       })
     } else {
       this.data.innerAudioContext.pause()
       this.setData({
-        musicStop: true,
-        musicClass: 'music_box-stop'
+        musicStop: true
       })
     }
   },
