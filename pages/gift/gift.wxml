@@ -1,14 +1,14 @@
 <!--pages/animate/animate.wxml-->
 <view>
   <view class="welcome_page_bg" bindtap="toWish" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
-    <view class="text_hi">Hi，</view>
-    <view class="text_girl">小仙女。</view>
-    <view class="text_happy_new_year">新年快乐呀！</view>
+    <view class="text text_hi">Hi，</view>
+    <view class="text text_girl">小仙女。</view>
+    <view class="text text_happy_new_year">新年快乐呀！</view>
   </view>
   <view wx:if="{{showWish}}" class="wish_page_bg" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
-    <view class="text_new_year">新的一年，</view>
-    <view class="text_wish_lucky">愿你与幸运撞个满怀。</view>
-    <view class="text_wish_arrive">愿你所有的期待都如约而至。</view>
+    <view class="text text_new_year">新的一年，</view>
+    <view class="text text_wish_lucky">愿你与幸运撞个满怀。</view>
+    <view class="text text_wish_arrive">愿你所有的期待都如约而至。</view>
     <button bindtap="toFireworks">去放烟花吧！</button>
   </view>
 

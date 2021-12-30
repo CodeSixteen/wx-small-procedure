@@ -1,4 +1,5 @@
 {
+  "setting": {},
   "condition": {
     "plugin": {
       "list": []
@@ -13,7 +14,7 @@
       "list": [
         {
           "name": "",
-          "pathName": "pages/animate/animate",
+          "pathName": "pages/gift/gift",
           "query": "",
           "scene": null
         }

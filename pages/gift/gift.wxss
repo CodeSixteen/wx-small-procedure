@@ -93,5 +93,8 @@
 .fireworks_stars {
   position: absolute;
   top: 0;
-
+}
+.text{
+  font-size: 32rpx;
+  color: rgb(117, 54, 98);
 }

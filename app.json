@@ -4,7 +4,7 @@
     "pages/book/book",
     "pages/like/like",
     "pages/logs/logs",
-    "pages/animate/animate"
+    "pages/gift/gift"
   ],
   "window":{
     "backgroundTextStyle":"light",
