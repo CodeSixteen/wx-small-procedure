@@ -1,6 +1,6 @@
 Page({
   data: {
-    myAudioSrc: 'http://m801.music.126.net/20211231002154/633d4a9e609aef418620ad0ef243da0c/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/8522835445/443d/7b84/e149/042462b5e27f8d468714249ba4c6318a.mp3',
+    myAudioSrc: 'http://m801.music.126.net/20211231003819/db4337134c3fdfb512d9847e3351f6aa/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/5198607933/cf1c/e0ed/917c/c9942294cbfe88f24f8e7b4ea62e3f2a.mp3',
     musicClass: 'music_box',
     showMusic: true,
     musicStop: false,
