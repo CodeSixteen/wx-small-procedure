@@ -44,7 +44,7 @@
   "compileType": "miniprogram",
   "libVersion": "2.17.0",
   "appid": "wx5d29d0e5617cf445",
-  "projectname": "wx-project",
+  "projectname": "inverted-compartment",
   "debugOptions": {
     "hidedInDevtools": []
   },

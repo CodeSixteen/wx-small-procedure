@@ -1,4 +1,3 @@
-<!--pages/animate/animate.wxml-->
 <view>
   <view wx:if="{{showWelcome}}" class="welcome_page_bg" bindtap="toWish" bindanimationend="showHi" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
     <view class="text_warp">
@@ -10,7 +9,7 @@
         新年快乐呀！
       </view>
     </view>
-    <view wx:if="{{showNextBtnText}}" class="next_btn" bindtap="toWish">上滑查看下一页</view>
+    <view wx:if="{{showNextBtnText}}" class="next_btn" bindtap="toWish">上滑去下一页</view>
   </view>
   <view wx:if="{{showWish}}" class="wish_page_bg" bindanimationend="showNewYear" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">
     <view class="wish_text_warp">
@@ -18,10 +17,7 @@
       <view wx:if="{{showLuckyText}}" class="text_wish_lucky" bindanimationend="showArrive">愿你与幸运撞个满怀。</view>
       <view wx:if="{{showArriveText}}" class="text_wish_arrive" bindanimationend="showToFireworks">愿你所有的期待都如约而至。</view>
     </view>
-    <view wx:if="{{showToFireworksBtn}}" class="btn_to_fireworks_wrap">
-      <view class="btn_to_fireworks_bg"></view>
-      <view class="btn_to_fireworks" bindtap="toFireworks">去放烟花吧</view>
-    </view>
+    <view wx:if="{{showToFireworksBtn}}" class="next_btn" bindtap="toFireworks">上滑去放烟花吧</view>
   </view>
 
   <view wx:if="{{showFireWorks}}" class="fireworks-page" bindtouchstart="touchScreenStart" bindtouchend="touchScreenEnd">

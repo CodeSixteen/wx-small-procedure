@@ -1,6 +1,7 @@
 Page({
   data: {
-    myAudioSrc: 'http://m801.music.126.net/20211231003819/db4337134c3fdfb512d9847e3351f6aa/jdymusic/obj/wo3DlMOGwrbDjj7DisKw/5198607933/cf1c/e0ed/917c/c9942294cbfe88f24f8e7b4ea62e3f2a.mp3',
+    myAudioSrc: 'http://nightingale-audios.oss-cn-beijing.aliyuncs.com/nightingale/b6b6_92dd_8078_38a88ca222f1c38780ea08f2609676e1.mp3?Expires=1641017965&OSSAccessKeyId=LTAI4G6EDrqvt1xhdeJAvczv&Signature=H0BXaF7SC3JTwn83fcs4qS3l1tI%3D',
+    myMusic2: 'http://nightingale-audios.oss-cn-beijing.aliyuncs.com/nightingale/xinchahui.mp3?Expires=1641038371&OSSAccessKeyId=LTAI4G6EDrqvt1xhdeJAvczv&Signature=V60Ub36juvfnOvAlQS1PaVrv6xQ%3D',
     musicClass: 'music_box',
     showMusic: true,
     musicStop: false,
@@ -23,34 +24,57 @@ Page({
     showToFireworksBtn: false
   },
   onShow() {
-    this.setData({
-      showWelcome: true
+    const fireworksMusic = wx.createInnerAudioContext()
+    fireworksMusic.autoplay = false
+    fireworksMusic.loop = true
+    fireworksMusic.src = this.data.myAudioSrc
+    fireworksMusic.onPlay((res) => {
+      if (this.data.musicStop) {
+        fireworksMusic.pause()
+      }
+    })
+    fireworksMusic.onError((res) => {
+      this.setData({
+        musicStop: true,
+        showMusic: false
+      })
     })
     const innerAudioContext = wx.createInnerAudioContext()
     innerAudioContext.autoplay = true
     innerAudioContext.loop = true
-    innerAudioContext.src = this.data.myAudioSrc
-    innerAudioContext.onPlay(() => {})
+    innerAudioContext.src = this.data.myMusic2
+    innerAudioContext.onPlay((res) => {
+      if (this.data.musicStop) {
+        innerAudioContext.pause()
+      }
+    })
     innerAudioContext.onError((res) => {
       this.setData({
         musicStop: true,
         showMusic: false
       })
-      console.log(res.errMsg)
-      console.log(res.errCode)
     })
     this.setData({
-      innerAudioContext
+      showWelcome: true,
+      innerAudioContext,
+      fireworksMusic
     })
   },
   stopMusic() {
     if (this.data.musicStop) {
-      this.data.innerAudioContext.play()
+      if (this.data.showWish || this.data.showWelcome) {
+        this.data.innerAudioContext.play()
+        this.data.fireworksMusic.pause()
+      } else if (this.data.showFireWorks) {
+        this.data.innerAudioContext.pause()
+        this.data.fireworksMusic.play()
+      }
       this.setData({
         musicStop: false
       })
     } else {
       this.data.innerAudioContext.pause()
+      this.data.fireworksMusic.pause()
       this.setData({
         musicStop: true
       })
@@ -67,9 +91,11 @@ Page({
     })
   },
   showHappyNewYear() {
-    this.setData({
-      showHappyNewYearText: true
-    })
+    setTimeout(() => {
+      this.setData({
+        showHappyNewYearText: true
+      })
+    }, 500)
   },
   showNextBtn() {
     this.setData({
@@ -105,9 +131,11 @@ Page({
     })
   },
   showArrive() {
-    this.setData({
-      showArriveText: true
-    })
+    setTimeout(() => {
+      this.setData({
+        showArriveText: true
+      })
+    }, 500)
   },
   showToFireworks() {
     this.setData({
@@ -438,6 +466,10 @@ Page({
   },
   toFireworks() {
     if (!this.data.isToFireworks) return
+    if (!this.data.musicStop && this.data.showMusic) {
+      this.data.innerAudioContext.pause()
+      this.data.fireworksMusic.play()
+    }
     this.setData({
       isToFireworks: false,
       showWish: false,
@@ -480,6 +512,10 @@ Page({
         if (pageY - this.data.pageY > 100) {
           if (this.data.timer) {
             clearInterval(this.data.timer)
+          }
+          if (!this.data.musicStop && this.data.showMusic) {
+            this.data.innerAudioContext.play()
+            this.data.fireworksMusic.pause()
           }
           this.setData({
             showFireWorks: false,
